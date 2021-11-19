@@ -27,12 +27,13 @@ public class EnemiesSpawner : MonoBehaviour
     {
         var delay = new WaitForSeconds(_spawnDelay);
 
-        foreach (SpawnPoint nextSpawnPoint in _spawnPoints)
+        while (true)
         {
-            yield return delay;
-            nextSpawnPoint.SpawnEnemy();
+            foreach (SpawnPoint nextSpawnPoint in _spawnPoints)
+            {
+                yield return delay;
+                nextSpawnPoint.SpawnEnemy();
+            }
         }
-
-        yield return SpawnEnemies();
     }
 }
